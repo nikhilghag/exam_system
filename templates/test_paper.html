@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if "test_name" in test_question_dict %}
+    <form action="/evaluator" method="post">     
+        <h3>{{ test_question_dict["test_name"]}}</h3>
+        
+        {% for q in test_question_dict["questions"] %}
+            <div class="question">
+                <h3>{{ q["question"]}}</h3>
+                    <div class="options">
+                        <label><input type="radio" name="{{ q['qid']}}" value= "{{ q['option1']}}" /> {{q['option1']}} </label>
+                        <label><input type="radio" name="{{ q['qid']}}" value= "{{ q['option2']}}" /> {{q['option2']}} </label>
+                        <label><input type="radio" name="{{ q['qid']}}" value= "{{ q['option3']}}" /> {{q['option3']}} </label>
+                        <label><input type="radio" name="{{ q['qid']}}" value= "{{ q['option4']}}" /> {{q['option4']}} </label>
+                    </div>                
+            </div>
+        {% endfor %}
+        <div class="submit-btn">
+            <button type="submit" value="Submit">Submit</button>
+        </div> 
+    </form>
+    {% else %}
+        <h3>No Test Available</h3>
+    {% endif %}
+{% endblock %}

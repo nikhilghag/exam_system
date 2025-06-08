@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <label id="login_msg" style="color: red;">Login attempts exhausted. Wait for <span id="timer">30</span> seconds before attempting again.</label>
+    <br>
+    <label id="redirect_msg" style="color: red;">You will be automatically redirected</label>
+    <script>
+        var timer = document.getElementById("timer");
+        var time = parseInt(timer.innerText)
+
+        setInterval(
+            function(){
+                if(time > 0) {
+                    time = time - 1
+                    timer.innerText = time
+                } else {
+                    window.location.href = "http://127.0.0.1:5000/";
+                }
+            }, 1000
+        );      
+        
+    </script>
+{% endblock %}

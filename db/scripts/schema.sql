@@ -1,3 +1,4 @@
+--Test Data Inserted
 CREATE TABLE User (
    userid INTEGER PRIMARY KEY AUTOINCREMENT,
    username TEXT UNIQUE,
@@ -5,6 +6,7 @@ CREATE TABLE User (
    role TEXT
 );
 
+--Test Data Inserted
 CREATE TABLE Student (
    studentid INTEGER PRIMARY KEY AUTOINCREMENT,
    name TEXT,
@@ -12,6 +14,7 @@ CREATE TABLE Student (
    FOREIGN KEY (userid) REFERENCES User(userid)
 );
 
+--Via Exam System Application
 CREATE TABLE TestScore (
    studentid INTEGER,
    tid INTEGER,
@@ -20,6 +23,7 @@ CREATE TABLE TestScore (
    FOREIGN KEY (tid) REFERENCES Test(tid)
 );
 
+--Test Data Inserted
 CREATE TABLE Question (
    qid INTEGER PRIMARY KEY AUTOINCREMENT,
    question TEXT,
@@ -32,6 +36,7 @@ CREATE TABLE Question (
    FOREIGN KEY (topicid) REFERENCES Topic(topicid)
 );
 
+--Test Data Inserted
 CREATE TABLE Test (
    tid INTEGER PRIMARY KEY AUTOINCREMENT,
    name TEXT,
@@ -42,6 +47,7 @@ CREATE TABLE Test (
    FOREIGN KEY (batchid) REFERENCES Batch(batchid)
 );
 
+--Test Data Inserted
 CREATE TABLE TestPaper (
    tid INTEGER,
    qid INTEGER,
@@ -49,6 +55,7 @@ CREATE TABLE TestPaper (
    FOREIGN KEY (qid) REFERENCES Question(qid)
 );
 
+--Test Data Inserted
 CREATE TABLE Topic (
    topicid INTEGER PRIMARY KEY AUTOINCREMENT,
    name TEXT,
@@ -56,11 +63,13 @@ CREATE TABLE Topic (
    FOREIGN KEY (parenttopic) REFERENCES Topic(topicid)
 );
 
+--Test Data Inserted
 CREATE TABLE Course (
    courseid INTEGER PRIMARY KEY AUTOINCREMENT,
    name TEXT
 );
 
+--Test Data Inserted
 CREATE TABLE CourseContent (
    courseid INTEGER,
    topicid INTEGER,
@@ -68,6 +77,7 @@ CREATE TABLE CourseContent (
    FOREIGN KEY (topicid) REFERENCES Topic(topicid)
 );
 
+--Test Data Inserted
 CREATE TABLE Teacher (
    teacherid INTEGER PRIMARY KEY AUTOINCREMENT,
    name TEXT,
@@ -75,17 +85,21 @@ CREATE TABLE Teacher (
    FOREIGN KEY (userid) REFERENCES User(userid)
 );
 
+--Test Data Inserted
 CREATE TABLE Lecture (
    lectureid INTEGER PRIMARY KEY AUTOINCREMENT,
    date TEXT
 );
 
+--Test Data Inserted
 CREATE TABLE Batch (
    batchid INTEGER PRIMARY KEY AUTOINCREMENT,
+   batchname TEXT,
    courseid INTEGER,
    FOREIGN KEY (courseid) REFERENCES Course(courseid)
 );
 
+--Test Data Inserted
 CREATE TABLE StudentBatch (
    studentid INTEGER,
    batchid INTEGER,
@@ -93,6 +107,7 @@ CREATE TABLE StudentBatch (
    FOREIGN KEY (batchid) REFERENCES Batch(batchid)
 );
 
+--Test Data Inserted
 CREATE TABLE BatchLecture (
    batchid INTEGER,
    lectureid INTEGER,
@@ -100,6 +115,7 @@ CREATE TABLE BatchLecture (
    FOREIGN KEY (lectureid) REFERENCES Lecture(lectureid)
 );
 
+--Via Exam System Application
 CREATE TABLE LectureCompletion (
    studentid INTEGER,
    lectureid INTEGER,
@@ -108,6 +124,7 @@ CREATE TABLE LectureCompletion (
    FOREIGN KEY (lectureid) REFERENCES Lecture(lectureid)
 );
 
+--Test Data Inserted
 CREATE TABLE LectureTopics (
    lectureid INTEGER,
    topicid INTEGER,

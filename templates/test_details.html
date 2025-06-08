@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if batch_test_list|length > 0 %}
+    <form action="/take_test" method="post"> 
+        <div class="options">
+            {% for batch in batch_test_list %}
+                <h4>Tests available for {{ batch["batchname"]}}</h4>
+                {% for test in batch["tests"]%}
+                    <label><input type="radio" name="test_id" value= "{{ test['tid']}}" />{{ test["name"]}}</label> <br /> 
+                {% endfor %}
+            {% endfor %}
+        </div> 
+        <div class="submit-btn">
+            <button type="submit" value="Submit">Submit</button>
+        </div>          
+    </form>
+    {% else %}
+        <h3>No Test Available</h3>
+    {% endif %}
+{% endblock %}

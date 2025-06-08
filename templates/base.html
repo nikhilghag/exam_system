@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exam System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+</head>
+<body>
+
+  <header>
+    <h1>Online Exam System</h1>
+    {% if 'userid' in session %}
+    <div class="header-right">
+      <a href="#">👤 Profile</a>
+      <a href="/logout">🔒 Logout</a>
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="container">
+    {% if 'userid' in session %}
+    <aside>      
+      <ul>
+        <li><a href="/home"> Dashboard</a></li>
+        <li><a href="#"> Course Details</a></li>
+        <li><a href="#"> Batch Details</a></li>
+        <li><a href="/take_test"> Take Test</a></li>
+      </ul>
+      {% endif %}
+    </aside>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <footer>
+    &copy; 2025 Exam System. All rights reserved.
+  </footer>
+
+</body>
+</html>
